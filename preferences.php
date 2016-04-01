@@ -231,22 +231,6 @@ function do_pic_change()
     else
     {
         $npic = stripslashes($_POST['newpic']);
-        $sz = get_filesize_remote($npic);
-        if ($sz <= 0 || $sz >= 1048576)
-        {
-            print 
-                    "Invalid new pic entered.<br />
-            &gt; <a href='preferences.php?action=picchange'>Back</a>";
-            $h->endpage();
-            exit;
-        }
-        $image = (@getimagesize($npic));
-        if (!is_array($image))
-        {
-            echo 'Invalid Image.<br />
-        	&gt; <a href="preferences.php?action=picchange">Go Back</a>';
-            die($h->endpage());
-        }
         $esc_npic =
                 mysql_real_escape_string(
                         htmlentities($npic, ENT_QUOTES, 'ISO-8859-1'), $c);
