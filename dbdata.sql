@@ -1240,7 +1240,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'admin','e229dca52dbfa50c12f80f746c8d6867',1,0.0000,1000000,0,1458931688,'10.123.222.210',12,100,100,5,5,12,100,100,0,0,1,0,0,0,2,'Male',0,1458930820,0,0,0,'admin@teachthenet.com','admin','','N/A',-1,-1,'',0,'','','');
+INSERT INTO `users` VALUES (2,'admin','e229dca52dbfa50c12f80f746c8d6867',1,0.0000,1000000,0,1458931688,'10.123.222.210',12,100,100,5,5,12,100,100,0,0,1,0,0,0,2,'Male',0,1458930820,0,0,0,'admin@teachthenet.com','admin','','','N/A',-1,-1,'',0,'','','');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
