@@ -198,7 +198,8 @@ Staff Notes: <br />
         }
         print "</td></tr></table>";
         print "<br><br><hr>";
-        print $r['profile_sig'];
+        include('bbcoder_adv.php');
+        print BB_coder($r['profile_sig']);
         print "<hr><br><br>";
     }
 }
