@@ -1221,6 +1221,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL DEFAULT '',
   `login_name` varchar(255) NOT NULL DEFAULT '',
   `display_pic` text NOT NULL,
+  `profile_sig` text NOT NULL,
   `duties` varchar(255) NOT NULL DEFAULT 'N/A',
   `bankmoney` int(11) NOT NULL DEFAULT '0',
   `cybermoney` int(11) NOT NULL DEFAULT '-1',

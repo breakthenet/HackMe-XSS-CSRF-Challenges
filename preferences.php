@@ -59,6 +59,14 @@ case 'picchange':
     pic_change();
     break;
 
+case 'profilesig2':
+    do_profilesig_change();
+    break;
+
+case 'profilesig':
+    profilesig_change();
+    break;
+
 default:
     prefs_home();
     break;
@@ -247,5 +255,27 @@ function do_pic_change()
         print "Pic changed!";
     }
 }
+
+
+function profilesig_change()
+{
+    global $ir, $c, $userid, $h;
+    print 
+            "<h3>Profile Signature Change</h3>
+Please note that BBCode is supported.<br />
+<form action='preferences.php?action=profilesig2' method='post'>
+<textarea name='newprofilesig'>{$ir['profile_sig']}</textarea><br />
+<input type='submit' value='Change Profile Signature' /></form>";
+}
+
+function do_profilesig_change()
+{
+    global $ir, $c, $userid, $h;
+    $npic = stripslashes($_POST['newprofilesig']);
+    $esc_npic = mysql_real_escape_string($npic, $c);
+    mysql_query("UPDATE users SET profile_sig='{$esc_npic}' WHERE userid=$userid", $c);
+    print "Profile signature changed!";
+}
+
 
 $h->endpage();
