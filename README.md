@@ -11,7 +11,7 @@ Challenges:
 
 [Challenge 1](https://github.com/breakthenet/file-upload-exercises/blob/master/challenges/challenge_1.md): Basic CSRF
 
-[Challenge 2](https://github.com/breakthenet/file-upload-exercises/blob/master/challenges/challenge_2.md): Mime types client-side
+[Challenge 2](https://github.com/breakthenet/file-upload-exercises/blob/master/challenges/challenge_2.md): XSS - thinking outside the box
 
 [Challenge 3](https://github.com/breakthenet/file-upload-exercises/blob/master/challenges/challenge_3.md): Mime types & image validation server-side
 

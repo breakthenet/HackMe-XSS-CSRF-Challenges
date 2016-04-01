@@ -142,7 +142,7 @@ Enemies: " . mysql_num_rows($q_z) . "
         if ($r['display_pic'])
         {
             print 
-                    "<img src='{$r['display_pic']}' width='150' height='150' alt='User Display Pic' title='User Display Pic' />";
+                    "<img src='{$r['display_pic']}' width='150' height='150' alt='User Display Pic' title='User Display Pic' /><br>{$r['display_pic']}";
         }
         else
         {

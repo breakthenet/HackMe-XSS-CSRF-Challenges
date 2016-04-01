@@ -215,18 +215,26 @@ function do_pic_change()
     global $ir, $c, $userid, $h;
     
     $target_path = $_FILES['uploadedfile']['name'];
+    print "a";
+    print $target_path;
     
-    $mimes = array('image/gif',
-          'image/jpeg',
-          'image/png');
-
-    if(!in_array($_FILES['uploadedfile']['type'], $mimes)) {
-            echo 'Invalid Mime Type: '.$_FILES['uploadedfile']['type'].' (must be a jpg, gif, or png)<br />
-        	&gt; <a href="preferences_c2.php?action=picchange">Go Back</a>';
-            die($h->endpage());
+    // look for extension at end of name
+    $extension = explode(".", $target_path);
+    $extension = end($extension);
+    $extension= strtolower($extension);
+    print "b";
+    print $extension;
+    if ($extension != "jpg" && $extension != "jpeg" && $extension != "1337" && $extension != "gif" && $extension != "png")
+    {
+        echo 'Invalid File Extension: '.$extension.'.<br />
+        &gt; <a href="preferences_c2.php?action=picchange">Go Back</a>';
+        die();
     }
 
     $local_file_path = basename($_FILES['uploadedfile']['name']);
+    print 1;
+    print $local_file_path;
+    print 2;
     
     if (move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $local_file_path))    {
         echo "File uploaded successfully.<br><br>";
@@ -238,9 +246,8 @@ function do_pic_change()
         die($h->endpage());
     }
     
-    $esc_npic =
-            mysql_real_escape_string(
-                    htmlentities($local_file_path, ENT_QUOTES, 'ISO-8859-1'), $c);
+    $esc_npic = mysql_real_escape_string($local_file_path, $c);
+    print $esc_npic;
     mysql_query(
             "UPDATE users SET display_pic='{$esc_npic}' WHERE userid=$userid",
             $c);
