@@ -197,6 +197,9 @@ Staff Notes: <br />
 [<a href='blacklist.php?action=add&ID={$r['userid']}'>Add Enemies</a>]<br />";
         }
         print "</td></tr></table>";
+        print "<br><br><hr>";
+        print $r['profile_sig'];
+        print "<hr><br><br>";
     }
 }
 $h->endpage();

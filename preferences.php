@@ -80,7 +80,8 @@ function prefs_home()
 <a href='preferences.php?action=sexchange'>Sex Change</a><br />
 <a href='preferences.php?action=passchange'>Password Change</a><br />
 <a href='preferences.php?action=namechange'>Name Change</a><br />
-<a href='preferences.php?action=picchange'>Display Pic Change</a>";
+<a href='preferences.php?action=picchange'>Display Pic Change</a><br />
+<a href='preferences.php?action=profilesig'>Profile Signature Change</a>";
 }
 
 function conf_sex_change()
