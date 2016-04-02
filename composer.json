@@ -1,6 +1,7 @@
 {
   "require": {
     "ext-mysql": "*",
-    "ext-mbstring":"*"
+    "ext-mbstring":"*",
+    "jonnyw/php-phantomjs": "4.*"
   }
 }
