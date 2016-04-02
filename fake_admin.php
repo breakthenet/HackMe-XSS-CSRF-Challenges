@@ -1,6 +1,6 @@
 <?php
 
-    use PhantomJs\Client;
+    use JonnyW\PhantomJs\Client;
 
     $client = Client::getInstance();
 
