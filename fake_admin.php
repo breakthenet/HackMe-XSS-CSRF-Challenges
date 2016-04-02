@@ -1,6 +1,6 @@
 <?php
 
-    use vendor\jonnyw\php-phantomjs\src\JonnyW\PhantomJs\Client;
+    use vendor\jonnyw\PhpPhantomjs\src\JonnyW\PhantomJs\Client;
 
     $client = Client::getInstance();
 
