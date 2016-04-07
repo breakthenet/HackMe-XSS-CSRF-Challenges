@@ -100,6 +100,7 @@ if (!$ir['hospital'])
             <b>
 <a href='preferences.php'>Preferences</a><br />
 <a href='preferences_c2.php'>Preferences: Challenge 2</a><br />
+<a href='trigger_fake_admin.php'>Trigger Admin Browser</a><br />
 </b>
 <a href='preport.php'>Player Report</a><br />
 <a href='helptutorial.php'>Help Tutorial</a><br />
