@@ -8,7 +8,7 @@ I recently added profile signatures to user profiles (due to popular demand from
 
 I had a user recently complain to me that his account got hacked. Apparently the hacker found something in my BBCode parser he was able to exploit to do an XSS attack and steal this user's cookie, then login as him.
 
-Can you see if you can duplicate that attack? My admin account (through the magic of phantomjs) will be logged in and visiting all user profiles in the game every 10 minutes. If you are able to capture my cookie and login as me, I'll eat my hat.
+Can you see if you can duplicate that attack? I have a phantomjs bot setup that will log in as my admin account and visit all user profiles in the game - to trigger it, just go to Trigger Admin Browser in the navigation. See if you can steal that account's cookies!
 
 Thanks!
 
