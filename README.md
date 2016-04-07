@@ -15,6 +15,8 @@ Challenges:
 
 [Challenge 3](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_3.md): XSS via BBCode parser, steal admin's cookies
 
+[Challenge 4](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_4.md): CSRF - trick an admin into upgrading your account to admin status.
+
 ----------------------
 
 Note that useful information for testing and debugging will be logged to the Papertrail app in your heroku instance. Open papertrail to view those streaming logs.
