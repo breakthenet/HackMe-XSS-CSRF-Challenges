@@ -33,7 +33,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=bobdole&password=bobdol
                 if (status !== "success") {
                     console.log("Failed opening "+msg);
                 } else {
-                    console.log("Successfully opened "+base_url++msg);
+                    console.log("Successfully opened "+base_url+msg);
                 }
                 killTimeout = setTimeout(function(){
                     phantom.exit(0);
