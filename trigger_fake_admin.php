@@ -25,7 +25,7 @@ $lv = date('F j, Y, g:i a', $ir['laston']);
 $h->userdata($ir, $lv, $fm, $cm);
 $h->menuarea();
 
-print "Fake admin triggered.<br><br>Running...";
+print "Admin login/browse process triggered.<br><br>Running...";
 
 $base_url = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/";
 print "Base URL = ".$base_url;
