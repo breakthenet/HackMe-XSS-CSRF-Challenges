@@ -43,7 +43,7 @@ Stuck?
   <summary>Click for hint 4</summary>
    Did you know you can execute javascript when an image loads? It's simple! All you have to do is use the onLoad attribute, like so:
    
-   &lt;img src="logo.png" onload="alert(1)"&gt
+   &lt;img src="logo.png" onload="alert(1)"&gt;
 </details>
 
 
