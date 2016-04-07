@@ -1456,10 +1456,10 @@ function userlevel()
 {
 	global $ir, $c, $h, $userid;
 
-	$_GET['level'] = abs((int) $_GET['level']);
-	$_GET['ID'] = abs((int) $_GET['ID']);
+	$_POST['level'] = abs((int) $_POST['level']);
+	$_POST['ID'] = abs((int) $_POST['ID']);
 	mysql_query(
-	"UPDATE users SET user_level={$_GET['level']} WHERE userid={$_GET['ID']}",
+	"UPDATE users SET user_level={$_POST['level']} WHERE userid={$_POST['ID']}",
 	$c);
 	print "User's level adjusted.";
 }
@@ -1470,7 +1470,7 @@ function userlevelform()
 
 	print
 	"<h3>User Level Adjust</h3>
-			<form action='new_staff.php' method='get'>
+			<form action='new_staff.php' method='post'>
 			<input type='hidden' name='action' value='userlevel'>
 			User: " . user_dropdown($c, 'ID')
 			. "<br />
