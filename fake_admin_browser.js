@@ -15,7 +15,7 @@ if (system.args.length === 1) {
 
 var page = require('webpage').create();
 var killTimeout = 0;
-page.open(base_url+'authenticate.php', 'post', 'username=bobdole&password=bobdole&save=OFF', function (status) {
+page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&save=OFF', function (status) {
     if (status !== 'success') {
         console.log('********Login failed!!!!');
         console.log(page.content);
