@@ -1470,8 +1470,7 @@ function userlevelform()
 
 	print
 	"<h3>User Level Adjust</h3>
-			<form action='new_staff.php' method='post'>
-			<input type='hidden' name='action' value='userlevel'>
+			<form action='new_staff.php?action=userlevel' method='post'>
 			User: " . user_dropdown($c, 'ID')
 			. "<br />
 					User Level:<br />
