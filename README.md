@@ -13,6 +13,7 @@ Challenges:
 
 [Challenge 2](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_2.md): XSS - thinking outside the box
 
+[Challenge 3](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_3.md): XSS via BBCode parser, steal admin's cookies
 
 ----------------------
 
