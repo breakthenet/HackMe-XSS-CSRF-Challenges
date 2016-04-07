@@ -47,7 +47,7 @@ Stuck?
 </details>
 
 <details> 
-  <summary>Click for hint 4</summary>
+  <summary>Click for hint 5</summary>
    While you can edit cookies with plain javascript, you can also cheat and use a browser extension like [this one](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg?hl=en).
 </details>
 
