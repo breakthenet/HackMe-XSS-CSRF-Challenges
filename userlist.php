@@ -67,7 +67,7 @@ while ($r = mysql_fetch_array($q))
                 "<img src='donator.gif' alt='Donator: {$r['donatordays']} Days Left' title='Donator: {$r['donatordays']} Days Left' />";
     }
     print
-            "<tr><td>{$r['userid']}</td><td><a href='viewuser.php?u={$r['userid']}'>{$r['username']} $d</a></td><td>\${$r['money']}</td><td>{$r['level']}</td><td>{$r['gender']}</td><td>";
+            "<tr><td>{$r['userid']}</td><td><a class='userprofilelink' href='viewuser.php?u={$r['userid']}'>{$r['username']} $d</a></td><td>\${$r['money']}</td><td>{$r['level']}</td><td>{$r['gender']}</td><td>";
     if ($r['laston'] >= time() - 15 * 60)
     {
         print "<font color=green><b>Online</b></font>";

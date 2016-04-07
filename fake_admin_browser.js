@@ -1,62 +1,51 @@
-//phantomjs fake_admin_browser.js
-
-
-function waitFor(testFx, onReady, timeOutMillis) {
-    var maxtimeOutMillis = timeOutMillis ? timeOutMillis : 3000, //< Default Max Timout is 3s
-        start = new Date().getTime(),
-        condition = false,
-        interval = setInterval(function() {
-            if ( (new Date().getTime() - start < maxtimeOutMillis) && !condition ) {
-                // If not time-out yet and condition not yet fulfilled
-                condition = (typeof(testFx) === "string" ? eval(testFx) : testFx()); //< defensive code
-            } else {
-                if(!condition) {
-                    // If condition still not fulfilled (timeout but condition is 'false')
-                    console.log("'waitFor()' timeout");
-                    phantom.exit(1);
-                } else {
-                    // Condition fulfilled (timeout and/or condition is 'true')
-                    console.log("'waitFor()' finished in " + (new Date().getTime() - start) + "ms.");
-                    typeof(onReady) === "string" ? eval(onReady) : onReady(); //< Do what it's supposed to do once the condition is fulfilled
-                    clearInterval(interval); //< Stop this interval
-                }
-            }
-        }, 250); //< repeat check every 250ms
-};
-
+// phantomjs fake_admin_browser.js
+// /app/vendor/phantomjs/bin fake_admin_browser.js
 
 var page = require('webpage').create();
-
-// Open Twitter on 'sencha' profile and, onPageLoad, do...
-page.open("http://twitter.com/#!/sencha", function (status) {
-    // Check for page load success
-    if (status !== "success") {
-        console.log("Unable to access network");
-    } else {
-        // Wait for 'signin-dropdown' to be visible
-        waitFor(function() {
-            // Check in the page if a specific element is now visible
-            return page.evaluate(function() {
-                return $("#signin-dropdown").is(":visible");
-            });
-        }, function() {
-           console.log("The sign-in dialog should be visible now.");
-           phantom.exit();
-        });
-    }
-});
-
-
-// Example using HTTP POST operation
-
-var server = 'http://posttestserver.com/post.php?dump',
-    data = 'universe=expanding&answer=42';
-
-page.open(server, 'post', data, function (status) {
+var killTimeout = 0;
+page.open('http://localhost:8888/authenticate.php', 'post', 'username=bobdole&password=bobdole&save=OFF', function (status) {
     if (status !== 'success') {
-        console.log('Unable to post!');
-    } else {
+        console.log('********Login failed!!!!');
         console.log(page.content);
+    } else {
+        console.log('Login successful.');
     }
-    phantom.exit();
+    
+    page = require('webpage').create();
+    
+    page.onConsoleMessage = function(msg) {
+        if (msg.indexOf("viewuser.php") > -1) {
+            clearTimeout(killTimeout);
+            page = require('webpage').create();
+            page.open("http://localhost:8888/"+msg, function (status) {
+                if (status !== "success") {
+                    console.log("Failed opening "+msg);
+                } else {
+                    console.log("Successfully opened "+msg);
+                }
+                killTimeout = setTimeout(function(){
+                    phantom.exit(0);
+                }, 3000);
+            });
+        }
+    };
+    
+    page.open("http://localhost:8888/userlist.php", function (status) {
+        // Check for page load success
+        if (status !== "success") {
+            console.log("Unable to load http://localhost:8888/userlist.php because of network issues");
+        } else {
+            page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
+                console.log("Extracting user profile links from userlist.php...");
+                page.evaluate(function() {
+                    $(".userprofilelink").each(function() {
+                        console.log(jQuery(this).attr('href'));
+                    });
+                });
+            });
+            killTimeout = setTimeout(function(){
+                phantom.exit(0);
+            }, 3000);
+        }
+    });
 });
