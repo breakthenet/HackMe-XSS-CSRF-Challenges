@@ -32,11 +32,10 @@ print "Base URL = ".$base_url;
 print "<br><br>";
 
 $results = shell_exec('phantomjs fake_admin_browser.js --url '.$base_url);
-//shell_exec('/app/vendor/phantomjs/bin/phantomjs fake_admin_browser.js --url '.$base_url);
 
 print "Results:";
 print "<hr>";
-print $results;
+print nl2br($results);
 print "<hr>";
 
 
