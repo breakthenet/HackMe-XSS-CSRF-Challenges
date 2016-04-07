@@ -1,5 +1,0 @@
-
-var headers = {{ input.getHeaders('json') }};
-
-page.customHeaders = headers ? headers : {};
-
