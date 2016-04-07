@@ -29,7 +29,7 @@ Stuck?
 
 <details> 
   <summary>Click for hint 2</summary>
-   There is no CSRF token on the [form used in the admin panel](https://github.com/breakthenet/xss-exercises/blob/master/new_staff_actions.php#L1455-L1483) to update a user's admin status! This means you can try a CSRF attack! Try to get the admin's browser to submit that form for you. In whatever solution you come up with, compare it to the code linked above very closely, since that is what you are trying to emulate.
+   There is no CSRF token on the [form used in the admin panel](https://github.com/breakthenet/xss-exercises/blob/master/new_staff_actions.php#L1455-L1483) to update a user's admin status! This means you can try a CSRF attack! Try to get the admin's browser to submit that form for you. In whatever solution you come up with, compare it to the code linked above very closely, since that is what you are trying to emulate. If needed, you can get your user ID from the Explore -> User List page.
 </details>
 
 <details> 
