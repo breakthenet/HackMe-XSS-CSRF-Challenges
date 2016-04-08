@@ -44,7 +44,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                     }
                     killTimeout = setTimeout(function(){
                         phantom.exit(0);
-                    }, 10000);
+                    }, 3000);
                 });
             }
             page.open(base_url+msg, function (status) {
@@ -56,6 +56,8 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                         console.log("Extracting any links in profile signature...");
                         page.evaluate(function() {
                             console.log("blah");
+                            console.log($("#profile_sig")[0], "~~~");
+                            console.log($("#profile_sig").find('a')[0]);
                             $("#profile_sig").find('a').each(function() {
                                 console.log("egg");
                                 console.log(jQuery(this).attr('href'));
@@ -66,7 +68,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                 }
                 killTimeout = setTimeout(function(){
                     phantom.exit(0);
-                }, 10000);
+                }, 3000);
             });
         }
     };
@@ -86,7 +88,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
             });
             killTimeout = setTimeout(function(){
                 phantom.exit(0);
-            }, 10000);
+            }, 3000);
         }
     });
 });
