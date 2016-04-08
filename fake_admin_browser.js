@@ -27,6 +27,32 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
     
     page.onConsoleMessage = function(msg) {
         if (msg.indexOf("viewuser.php") > -1) {
+            //Found user profile, run it and scan for links
+            
+            clearTimeout(killTimeout);
+            page = require('webpage').create();
+            page.open(base_url+msg, function (status) {
+                if (status !== "success") {
+                    console.log("Failed opening "+msg);
+                } else {
+                    console.log("Successfully opened "+base_url+msg);
+                    page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
+                        console.log("Extracting any links in forum signature...");
+                        page.evaluate(function() {
+                            $("#profile_sig").find('a').each(function() {
+                                console.log(jQuery(this).attr('href'));
+                            });
+                        });
+                    });
+                }
+                killTimeout = setTimeout(function(){
+                    phantom.exit(0);
+                }, 3000);
+            });
+        }
+        else {
+            //Found link on user profile, just run it
+            
             clearTimeout(killTimeout);
             page = require('webpage').create();
             page.open(base_url+msg, function (status) {

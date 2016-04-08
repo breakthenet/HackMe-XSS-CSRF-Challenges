@@ -199,7 +199,9 @@ Staff Notes: <br />
         print "</td></tr></table>";
         print "<br><br><hr>";
         include('bbcoder_adv.php');
+        print "<span id='profile_sig'>";
         print BB_coder($r['profile_sig']);
+        print "</span>";
         print "<hr><br><br>";
     }
 }
