@@ -60,10 +60,7 @@ function scan_user_profile(profileurl) {
             userprofilepage.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function() {
                 console.log("Extracting any links in profile signature...");
                 userprofilepage.evaluate(function() {
-                    alert(document.documentElement.innerHTML);
-                    alert($(".profile_sig").text());
                     jQuery(".profile_sig").find('a').each(function() {
-                        alert("egg");
                         alert(jQuery(this).attr('href'));
                     });
                 });
