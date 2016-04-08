@@ -73,7 +73,7 @@ function scan_user_profile(profileurl) {
 }
 
 function scan_external_age(url) {    
-    if (user.indexOf("googleapis") > -1) {
+    if (url.indexOf("googleapis") > -1) {
         //pass
     }
     else {
