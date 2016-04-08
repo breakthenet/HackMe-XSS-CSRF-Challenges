@@ -55,14 +55,11 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                     userprofilepage.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function() {
                         console.log("Extracting any links in profile signature...");
                         userprofilepage.evaluate(function() {
-                            alert("blah");
-                            alert($(".profile_sig").text(), "~~~");
-                            alert($(".profile_sig").find('a')[0]);
+                            alert($(".profile_sig").text());
                             $(".profile_sig").find('a').each(function() {
                                 alert("egg");
                                 alert(jQuery(this).attr('href'));
                             });
-                            alert("fish");
                         });
                     });
                 }
