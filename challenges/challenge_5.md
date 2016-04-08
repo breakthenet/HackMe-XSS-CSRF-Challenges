@@ -56,7 +56,7 @@ String.prototype.toCharCode = function(){
   <summary>Click for hint 5</summary>
    If you run into trouble concatenating javascript strings with the plus symbol (+), try using the concat function instead!
    ```
-   str1.concat(str2);
+   str1.concat(str2)
    ```
 </details>
 
