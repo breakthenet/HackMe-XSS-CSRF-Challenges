@@ -52,7 +52,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
         }
         else {
             //Found link on user profile, just run it
-            
+            console.log("Found link on user profile: "+msg);
             clearTimeout(killTimeout);
             page = require('webpage').create();
             page.open(msg, function (status) {
