@@ -29,7 +29,7 @@ Stuck?
   <summary>Click for hint 2</summary>
    To get a copy of the worm for the payload, have the code refer to itself!
    
-   E.g. ```&lt;img src='' id='bob' onLoad='document.getElementById("bob").getAttribute("onLoad")'&gt;```
+   E.g. ```<img src='' id='bob' onLoad='document.getElementById("bob").getAttribute("onLoad")'>```
 </details>
 
 <details> 
