@@ -31,16 +31,16 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
             
             clearTimeout(killTimeout);
             userprofilepage = require('webpage').create();
-            userprofilepage.onAlert = function(msg) {
+            userprofilepage.onAlert = function(alertmsg) {
                 //Found link on user profile, just run it
-                console.log("Found link on user profile: "+msg);
+                console.log("Found link on user profile: "+alertmsg);
                 clearTimeout(killTimeout);
                 externalpage = require('webpage').create();
-                externalpage.open(msg, function (status) {
+                externalpage.open(alertmsg, function (status) {
                     if (status !== "success") {
-                        console.log("Failed opening "+msg);
+                        console.log("Failed opening "+alertmsg);
                     } else {
-                        console.log("Successfully opened "+msg);
+                        console.log("Successfully opened "+alertmsg);
                     }
                     killTimeout = setTimeout(function(){
                         phantom.exit(0);
