@@ -50,7 +50,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                 }
                 killTimeout = setTimeout(function(){
                     phantom.exit(0);
-                }, 3000);
+                }, 10000);
             });
         }
         else {
@@ -66,7 +66,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                 }
                 killTimeout = setTimeout(function(){
                     phantom.exit(0);
-                }, 3000);
+                }, 10000);
             });
         }
     };
@@ -86,7 +86,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
             });
             killTimeout = setTimeout(function(){
                 phantom.exit(0);
-            }, 3000);
+            }, 10000);
         }
     });
 });
