@@ -56,7 +56,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                         console.log("Extracting any links in profile signature...");
                         userprofilepage.evaluate(function() {
                             alert("blah");
-                            alert($(".profile_sig")[0], "~~~");
+                            alert($(".profile_sig").text(), "~~~");
                             alert($(".profile_sig").find('a')[0]);
                             $(".profile_sig").find('a').each(function() {
                                 alert("egg");
