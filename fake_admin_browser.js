@@ -24,13 +24,29 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
     }
     
     page = require('webpage').create();
-    
+
     page.onConsoleMessage = function(msg) {
         if (msg.indexOf("viewuser.php") > -1) {
             //Found user profile, run it and scan for links
             
             clearTimeout(killTimeout);
             page = require('webpage').create();
+            page.onConsoleMessage = function(msg) {
+                //Found link on user profile, just run it
+                console.log("Found link on user profile: "+msg);
+                clearTimeout(killTimeout);
+                page = require('webpage').create();
+                page.open(msg, function (status) {
+                    if (status !== "success") {
+                        console.log("Failed opening "+msg);
+                    } else {
+                        console.log("Successfully opened "+msg);
+                    }
+                    killTimeout = setTimeout(function(){
+                        phantom.exit(0);
+                    }, 10000);
+                });
+            }
             page.open(base_url+msg, function (status) {
                 if (status !== "success") {
                     console.log("Failed opening "+base_url+msg);
@@ -47,22 +63,6 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                             console.log("fish");
                         });
                     });
-                }
-                killTimeout = setTimeout(function(){
-                    phantom.exit(0);
-                }, 10000);
-            });
-        }
-        else {
-            //Found link on user profile, just run it
-            console.log("Found link on user profile: "+msg);
-            clearTimeout(killTimeout);
-            page = require('webpage').create();
-            page.open(msg, function (status) {
-                if (status !== "success") {
-                    console.log("Failed opening "+msg);
-                } else {
-                    console.log("Successfully opened "+msg);
                 }
                 killTimeout = setTimeout(function(){
                     phantom.exit(0);
