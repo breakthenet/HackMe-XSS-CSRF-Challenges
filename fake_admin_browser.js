@@ -52,7 +52,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                     console.log("Failed opening "+base_url+msg);
                 } else {
                     console.log("Successfully opened "+base_url+msg);
-                    page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
+                    page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function() {
                         console.log("Extracting any links in profile signature...");
                         page.evaluate(function() {
                             console.log("blah");
