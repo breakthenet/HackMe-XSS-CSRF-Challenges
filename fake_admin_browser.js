@@ -2,7 +2,9 @@
 // Heroku: /app/vendor/phantomjs/bin/phantomjs fake_admin_browser.js --url test.com 
 
 var system = require('system');
+var killTimeout = 0;
 var base_url = "http://localhost:8888/";
+
 if (system.args.length === 1) {
     console.log('Try to pass some args when invoking this script!');
 } else {
@@ -13,72 +15,24 @@ if (system.args.length === 1) {
     });
 }
 
-var page = require('webpage').create();
-var killTimeout = 0;
-page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&save=OFF', function (status) {
-    if (status !== 'success') {
-        console.log('********Login failed!!!!');
-        console.log(page.content);
-    } else {
-        console.log('Login successful.');
-    }
+function scan_user_list() {
+    var userlistpage = require('webpage').create();
     
-    page = require('webpage').create();
-
-    page.onConsoleMessage = function(msg) {
+    userlistpage.onConsoleMessage = function(msg) {
         if (msg.indexOf("viewuser.php") > -1) {
             //Found user profile, run it and scan for links
-            
-            clearTimeout(killTimeout);
-            userprofilepage = require('webpage').create();
-            userprofilepage.onAlert = function(alertmsg) {
-                //Found link on user profile, just run it
-                console.log("Found link on user profile: "+alertmsg);
-                clearTimeout(killTimeout);
-                externalpage = require('webpage').create();
-                externalpage.open(alertmsg, function (status) {
-                    if (status !== "success") {
-                        console.log("Failed opening "+alertmsg);
-                    } else {
-                        console.log("Successfully opened "+alertmsg);
-                    }
-                    killTimeout = setTimeout(function(){
-                        phantom.exit(0);
-                    }, 3000);
-                });
-            }
-            userprofilepage.open(base_url+msg, function (status) {
-                if (status !== "success") {
-                    console.log("Failed opening "+base_url+msg);
-                } else {
-                    console.log("Successfully opened "+base_url+msg);
-                    userprofilepage.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function() {
-                        console.log("Extracting any links in profile signature...");
-                        userprofilepage.evaluate(function() {
-                            alert(document.documentElement.innerHTML);
-                            alert($(".profile_sig").text());
-                            $(".profile_sig").find('a').each(function() {
-                                alert("egg");
-                                alert(jQuery(this).attr('href'));
-                            });
-                        });
-                    });
-                }
-                killTimeout = setTimeout(function(){
-                    phantom.exit(0);
-                }, 3000);
-            });
+            scan_user_profile(msg);
         }
     };
     
-    page.open(base_url+"userlist.php", function (status) {
+    userlistpage.open(base_url+"userlist.php", function (status) {
         // Check for page load success
         if (status !== "success") {
             console.log("Unable to load "+base_url+"userlist.php because of network issues");
         } else {
-            page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
+            userlistpage.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
                 console.log("Extracting user profile links from userlist.php...");
-                page.evaluate(function() {
+                userlistpage.evaluate(function() {
                     $(".userprofilelink").each(function() {
                         console.log(jQuery(this).attr('href'));
                     });
@@ -89,4 +43,62 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
             }, 3000);
         }
     });
+}
+
+function scan_user_profile(profileurl) {
+    clearTimeout(killTimeout);
+    var userprofilepage = require('webpage').create();
+    userprofilepage.onAlert = function(alertmsg) {
+        //Found link on user profile, just run it
+        scan_external_age(alertmsg);
+    }
+    userprofilepage.open(base_url+profileurl, function (status) {
+        if (status !== "success") {
+            console.log("Failed opening "+base_url+profileurl);
+        } else {
+            console.log("Successfully opened "+base_url+profileurl);
+            userprofilepage.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function() {
+                console.log("Extracting any links in profile signature...");
+                userprofilepage.evaluate(function() {
+                    alert(document.documentElement.innerHTML);
+                    alert($(".profile_sig").text());
+                    jQuery(".profile_sig").find('a').each(function() {
+                        alert("egg");
+                        alert(jQuery(this).attr('href'));
+                    });
+                });
+            });
+        }
+        killTimeout = setTimeout(function(){
+            phantom.exit(0);
+        }, 3000);
+    });
+}
+
+function scan_external_age(url) {
+    clearTimeout(killTimeout);
+    console.log("Found link on user profile: "+url);
+    var externalpage = require('webpage').create();
+    externalpage.open(url, function (status) {
+        if (status !== "success") {
+            console.log("Failed opening "+url);
+        } else {
+            console.log("Successfully opened "+url);
+        }
+        killTimeout = setTimeout(function(){
+            phantom.exit(0);
+        }, 3000);
+    });
+}
+
+var loginpage = require('webpage').create();
+loginpage.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&save=OFF', function (status) {
+    if (status !== 'success') {
+        console.log('********Login failed!!!!');
+        console.log(loginpage.content);
+    } else {
+        console.log('Login successful.');
+    }
+    
+    scan_user_list();
 });
