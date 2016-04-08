@@ -12,7 +12,7 @@ He told me he got "hacked" - he said he was browsing through user profiles, and 
 
 Perhaps you could dig into it and shed some light on it? As far as we know, the only way to change a user's status is via the Staff Panel -> Adjust User Level form, which looks like [this](https://github.com/breakthenet/xss-exercises/blob/master/new_staff_actions.php#L1455-L1483).
 
-I have a phantomjs bot setup that will log in as my admin account and visit all user profiles in the game. Then, for each profile, it will click ANY links in each profile (you can create a link in bbcode with `[url]http://site.com[/url]`). To trigger this bot, just go to Trigger Admin Browser in the navigation. 
+I have a phantomjs bot setup that will log in as my admin account and visit all user profiles in the game. Then, for each profile, it will click ANY links in each profile signature (you can create a link in bbcode with `[url]http://site.com[/url]`). To trigger this bot, just go to Trigger Admin Browser in the navigation. 
 
 Thanks!
 
