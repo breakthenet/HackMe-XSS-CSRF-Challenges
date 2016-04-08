@@ -50,12 +50,12 @@ function scan_user_profile(profileurl) {
     var userprofilepage = require('webpage').create();
     userprofilepage.onAlert = function(alertmsg) {
         //Found link on user profile, just run it
-        if (msg.indexOf("jquery") > -1) {
-            //pass
-        }
-        else {
+        //if (msg.indexOf("jquery") > -1) {
+        //    //pass
+        //}
+        //else {
             scan_external_age(alertmsg);
-        }
+        //}
     }
     userprofilepage.open(base_url+profileurl, function (status) {
         if (status !== "success") {
