@@ -6,6 +6,9 @@ Deploy to your own Heroku instance with this button below, then complete the cha
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+*NOTE - if you get an error while deploying, wait 60 seconds and try again. The phantomjs buildpack used in this deploy fails intermittently on build when heroku has trouble establishing a connection to bitbucket, but it's always worked for me after a couple tries.
+
+
 Challenges:
 ----------------------
 
@@ -22,12 +25,3 @@ Challenges:
 ----------------------
 
 Note that useful information for testing and debugging will be logged to the Papertrail app in your heroku instance. Open papertrail to view those streaming logs.
-
-----------------------
-
-TroubleShooting:
-
-Sometimes, an error can occur when deploying to Heroku on this line:
------> Fetching PhantomJS 2.1.1 binaries at https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-
-I've seen a couple explanations for this, but the common one was bitbucket wasn't reachable at that moment. If you try again a few minutes later, it should work.
