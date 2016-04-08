@@ -33,7 +33,7 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
             page = require('webpage').create();
             page.open(base_url+msg, function (status) {
                 if (status !== "success") {
-                    console.log("Failed opening "+msg);
+                    console.log("Failed opening "+base_url+msg);
                 } else {
                     console.log("Successfully opened "+base_url+msg);
                     page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
@@ -55,11 +55,11 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
             
             clearTimeout(killTimeout);
             page = require('webpage').create();
-            page.open(base_url+msg, function (status) {
+            page.open(msg, function (status) {
                 if (status !== "success") {
                     console.log("Failed opening "+msg);
                 } else {
-                    console.log("Successfully opened "+base_url+msg);
+                    console.log("Successfully opened "+msg);
                 }
                 killTimeout = setTimeout(function(){
                     phantom.exit(0);
