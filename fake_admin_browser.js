@@ -50,9 +50,7 @@ function scan_user_profile(profileurl) {
     var userprofilepage = require('webpage').create();
     userprofilepage.onAlert = function(alertmsg) {
         //Found link on user profile, just run it
-        if (!alertmsg.indexOf("googleapis") > -1) {
-            scan_external_age(alertmsg);
-        }
+        scan_external_age(alertmsg);
     }
     userprofilepage.open(base_url+profileurl, function (status) {
         if (status !== "success") {
@@ -75,19 +73,24 @@ function scan_user_profile(profileurl) {
 }
 
 function scan_external_age(url) {    
-    clearTimeout(killTimeout);
-    console.log("Found link on user profile: "+url);
-    var externalpage = require('webpage').create();
-    externalpage.open(url, function (status) {
-        if (status !== "success") {
-            console.log("Failed opening "+url);
-        } else {
-            console.log("Successfully opened "+url);
-        }
-        killTimeout = setTimeout(function(){
-            phantom.exit(0);
-        }, 3000);
-    });
+    if (user.indexOf("googleapis") > -1) {
+        //pass
+    }
+    else {
+        clearTimeout(killTimeout);
+        console.log("Found link on user profile: "+url);
+        var externalpage = require('webpage').create();
+        externalpage.open(url, function (status) {
+            if (status !== "success") {
+                console.log("Failed opening "+url);
+            } else {
+                console.log("Successfully opened "+url);
+            }
+            killTimeout = setTimeout(function(){
+                phantom.exit(0);
+            }, 3000);
+        });
+    }
 }
 
 var loginpage = require('webpage').create();
