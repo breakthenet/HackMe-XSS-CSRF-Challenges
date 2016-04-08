@@ -13,9 +13,11 @@ Challenges:
 
 [Challenge 2](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_2.md): XSS - thinking outside the box
 
-[Challenge 3](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_3.md): XSS via BBCode parser, steal admin's cookies
+[Challenge 3](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_3.md): CSRF - trick an admin into upgrading your account to admin status.
 
-[Challenge 4](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_4.md): CSRF - trick an admin into upgrading your account to admin status.
+[Challenge 4](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_4.md): XSS via BBCode parser, steal admin's cookies
+
+[Challenge 5](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_5.md): XSS - creating a xss javascript worm
 
 ----------------------
 
