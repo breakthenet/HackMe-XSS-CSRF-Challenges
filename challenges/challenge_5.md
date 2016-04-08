@@ -30,4 +30,23 @@ Stuck?
    To get a copy of the worm for the payload, have the code refer to itself! E.g. &lt;img src='' id='bob' onLoad='document.getElementById("bob").getAttribute("onLoad")'&gt;
 </details>
 
+<details> 
+  <summary>Click for hint 3</summary>
+   You may find you need to use some characters in your payload that are difficult to escape properly (or just might be sanitized). To get around this, look at the javascript function String.fromCharCode.
+</details>
+
+<details> 
+  <summary>Click for hint 4</summary>
+   While constructing your payload, you may find this function useful:
+   
+   ```
+String.prototype.toCharCode = function(){
+    var str = this.split(''), len = str.length, work = new Array(len);
+    for (var i = 0; i < len; ++i){
+        work[i] = str[i].charCodeAt();
+    }
+    return work.join(',');
+}
+   ```
+</details>
 
