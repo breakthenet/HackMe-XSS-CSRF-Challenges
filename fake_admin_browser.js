@@ -30,13 +30,13 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
             //Found user profile, run it and scan for links
             
             clearTimeout(killTimeout);
-            page = require('webpage').create();
-            page.onConsoleMessage = function(msg) {
+            userprofilepage = require('webpage').create();
+            userprofilepage.onAlert = function(msg) {
                 //Found link on user profile, just run it
                 console.log("Found link on user profile: "+msg);
                 clearTimeout(killTimeout);
-                page = require('webpage').create();
-                page.open(msg, function (status) {
+                externalpage = require('webpage').create();
+                externalpage.open(msg, function (status) {
                     if (status !== "success") {
                         console.log("Failed opening "+msg);
                     } else {
@@ -47,22 +47,22 @@ page.open(base_url+'authenticate.php', 'post', 'username=admin&password=cupcake&
                     }, 3000);
                 });
             }
-            page.open(base_url+msg, function (status) {
+            userprofilepage.open(base_url+msg, function (status) {
                 if (status !== "success") {
                     console.log("Failed opening "+base_url+msg);
                 } else {
                     console.log("Successfully opened "+base_url+msg);
-                    page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function() {
+                    userprofilepage.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function() {
                         console.log("Extracting any links in profile signature...");
-                        page.evaluate(function() {
-                            console.log("blah");
-                            console.log($(".profile_sig")[0], "~~~");
-                            console.log($(".profile_sig").find('a')[0]);
+                        userprofilepage.evaluate(function() {
+                            alert("blah");
+                            alert($(".profile_sig")[0], "~~~");
+                            alert($(".profile_sig").find('a')[0]);
                             $(".profile_sig").find('a').each(function() {
-                                console.log("egg");
-                                console.log(jQuery(this).attr('href'));
+                                alert("egg");
+                                alert(jQuery(this).attr('href'));
                             });
-                            console.log("fish");
+                            alert("fish");
                         });
                     });
                 }
