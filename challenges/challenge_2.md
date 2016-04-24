@@ -1,7 +1,5 @@
 # XSS/CSRF Challenge 2
 
-----------------------
-
 Yikes. Thanks for finding that thing in Challenge 1. To get around that issue, I'm experimenting with a file-upload feature (instead of linking to an image url).
 
 It's located at Preferences Preferences: Challenge 2 in the main menu of the game. Now you can upload a file there, and then see it in the user's profile.
