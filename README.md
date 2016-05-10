@@ -12,15 +12,15 @@ Deploy to your own Heroku instance with this button below, then complete the cha
 Challenges:
 ----------------------
 
-[Challenge 1](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_1.md): Basic CSRF
+[Challenge 1](https://github.com/breakthenet/HackMe-XSS-CSRF-Challenges/blob/master/challenges/challenge_1.md): Basic CSRF
 
-[Challenge 2](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_2.md): XSS - thinking outside the box
+[Challenge 2](https://github.com/breakthenet/HackMe-XSS-CSRF-Challenges/blob/master/challenges/challenge_2.md): XSS - thinking outside the box
 
-[Challenge 3](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_3.md): CSRF - trick an admin into upgrading your account to admin status.
+[Challenge 3](https://github.com/breakthenet/HackMe-XSS-CSRF-Challenges/blob/master/challenges/challenge_3.md): CSRF - trick an admin into upgrading your account to admin status.
 
-[Challenge 4](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_4.md): XSS via BBCode parser, steal admin's cookies
+[Challenge 4](https://github.com/breakthenet/HackMe-XSS-CSRF-Challenges/blob/master/challenges/challenge_4.md): XSS via BBCode parser, steal admin's cookies
 
-[Challenge 5](https://github.com/breakthenet/xss-exercises/blob/master/challenges/challenge_5.md): XSS - creating a xss javascript worm
+[Challenge 5](https://github.com/breakthenet/HackMe-XSS-CSRF-Challenges/blob/master/challenges/challenge_5.md): XSS - creating a xss javascript worm
 
 ----------------------
 
